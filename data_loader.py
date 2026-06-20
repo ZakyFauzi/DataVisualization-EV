@@ -3,7 +3,7 @@ import numpy as np
 import re
 import os
 
-DATA_DIR = r"c:\ZAKY\s1-telu\sem4\DATA VISUALIZATION METHOD\tubes\data"
+DATA_DIR = "data"
 
 def get_google_trends():
     path = os.path.join(DATA_DIR, "time_series_ID_20110620-0000_20260620-2213.csv")
