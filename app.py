@@ -39,8 +39,8 @@ st.markdown("""
 <style>
     /* Main App Layout */
     .stApp {
-        background-color: #090a10;
-        color: #e2e8f0;
+        background-color: #ffffff;
+        color: #090a10;
         font-family: 'Outfit', sans-serif;
     }
     
@@ -754,6 +754,14 @@ with tab4:
     
 </div>
 """
-    # Clean leading and trailing whitespace from each line to prevent markdown from interpreting it as an indented code block
-    poster_html = "\n".join([line.strip() for line in poster_html.split("\n")])
+    # Clean leading/trailing whitespace, remove HTML comments, and remove blank lines to prevent markdown block parsing issues
+    lines = []
+    for line in poster_html.split("\n"):
+        line_stripped = line.strip()
+        if not line_stripped:
+            continue
+        if line_stripped.startswith("<!--") and line_stripped.endswith("-->"):
+            continue
+        lines.append(line_stripped)
+    poster_html = "\n".join(lines)
     st.markdown(poster_html, unsafe_allow_html=True)
