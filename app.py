@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import textwrap
 from data_loader import (
     get_google_trends,
     get_bps_provinsi_2025,
@@ -599,153 +600,158 @@ with tab3:
 
 # ----------------- TAB 4: POSTER INFOGRAFIS (FORMAT POSTER) -----------------
 with tab4:
-    # Print trigger button
-    st.button("Print / Simpan Sebagai PDF", on_click=None, help="Gunakan menu print browser (Ctrl+P / Cmd+P) untuk menyimpan poster sebagai PDF.")
-    
     # Render the poster layout as a single-page structured dashboard
-    st.markdown("""
-    <div id="print-section" style="background-color: #0b0c15; color: #e2e8f0; padding: 40px; border-radius: 12px; border: 2px solid #00f2fe; width: 100%; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+    # Use textwrap.dedent to avoid common leading whitespace which causes markdown to treat it as an indented code block
+    st.markdown(textwrap.dedent("""
+        <!-- Browser Native Print Trigger -->
+        <div style="text-align: center; margin-bottom: 20px; display: flex; justify-content: center; gap: 15px;">
+            <button onclick="window.print()" style="background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); color: #090a10; border: none; padding: 12px 24px; font-weight: 700; font-size: 1rem; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4); transition: transform 0.2s;">
+                🖨️ Cetak Poster / Simpan PDF
+            </button>
+        </div>
         
-        <!-- Poster Header -->
-        <div style="text-align: center; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 25px;">
-            <div style="color: #39ff14; font-weight: 800; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;">
-                Statistics Infographic Competition (SIC) SATRIA DATA 2026
+        <div id="print-section" style="background-color: #0b0c15; color: #e2e8f0; padding: 40px; border-radius: 12px; border: 2px solid #00f2fe; width: 100%; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+            
+            <!-- Poster Header -->
+            <div style="text-align: center; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 25px;">
+                <div style="color: #39ff14; font-weight: 800; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;">
+                    Statistics Infographic Competition (SIC) SATRIA DATA 2026
+                </div>
+                <h1 style="color: #ffffff; font-size: 2.2rem; font-weight: 800; margin: 10px 0; line-height: 1.2;">
+                    TRANSISI EMERGENSI EKOSISTEM EV DI INDONESIA
+                </h1>
+                <p style="color: #94a3b8; font-size: 1rem; margin: 5px 0 0 0; font-style: italic;">
+                    Menakar Kesiapan Pasar, Infrastruktur SPKLU, serta Tantangan Kerja Hijau Nasional
+                </p>
             </div>
-            <h1 style="color: #ffffff; font-size: 2.2rem; font-weight: 800; margin: 10px 0; line-height: 1.2;">
-                TRANSISI EMERGENSI EKOSISTEM EV DI INDONESIA
-            </h1>
-            <p style="color: #94a3b8; font-size: 1rem; margin: 5px 0 0 0; font-style: italic;">
-                Menakar Kesiapan Pasar, Infrastruktur SPKLU, serta Tantangan Kerja Hijau Nasional
-            </p>
-        </div>
-        
-        <!-- Section 1: The Transition Gap -->
-        <div style="margin-bottom: 30px;">
-            <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-                1. Jurang Transisi: Skala Raksasa yang Harus Dielektrifikasi
-            </h3>
-            <div style="display: flex; gap: 20px; margin-bottom: 10px;">
-                <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border-left: 4px solid #64748b;">
-                    <div style="font-size: 0.8rem; color: #94a3b8;">Populasi Kendaraan Konvensional (BBM)</div>
-                    <div style="font-size: 1.6rem; font-weight: 700; color: #ffffff;">172.938.093 Unit</div>
-                    <div style="font-size: 0.75rem; color: #64748b; margin-top: 5px;">Minyak bumi impor menekan APBN</div>
+            
+            <!-- Section 1: The Transition Gap -->
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
+                    1. Jurang Transisi: Skala Raksasa yang Harus Dielektrifikasi
+                </h3>
+                <div style="display: flex; gap: 20px; margin-bottom: 10px;">
+                    <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border-left: 4px solid #64748b;">
+                        <div style="font-size: 0.8rem; color: #94a3b8;">Populasi Kendaraan Konvensional (BBM)</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: #ffffff;">172.938.093 Unit</div>
+                        <div style="font-size: 0.75rem; color: #64748b; margin-top: 5px;">Minyak bumi impor menekan APBN</div>
+                    </div>
+                    <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border-left: 4px solid #39ff14;">
+                        <div style="font-size: 0.8rem; color: #94a3b8;">Realisasi Populasi KBLBB (Listrik Murni)</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: #39ff14;">147.119 Unit</div>
+                        <div style="font-size: 0.75rem; color: #39ff14; margin-top: 5px;">Hanya ~0,08% dari total armada nasional</div>
+                    </div>
                 </div>
-                <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border-left: 4px solid #39ff14;">
-                    <div style="font-size: 0.8rem; color: #94a3b8;">Realisasi Populasi KBLBB (Listrik Murni)</div>
-                    <div style="font-size: 1.6rem; font-weight: 700; color: #39ff14;">147.119 Unit</div>
-                    <div style="font-size: 0.75rem; color: #39ff14; margin-top: 5px;">Hanya ~0,08% dari total armada nasional</div>
-                </div>
+                <p style="font-size: 0.9rem; line-height: 1.5; color: #cbd5e1; margin-top: 10px;">
+                    Tantangan transisi energi di Indonesia bukan sekadar mendatangkan mobil listrik, melainkan bagaimana mengganti atau mengkonversi <b>172,9 juta kendaraan pembakaran internal (ICE)</b> yang saat ini mendominasi jalanan tanah air.
+                </p>
             </div>
-            <p style="font-size: 0.9rem; line-height: 1.5; color: #cbd5e1; margin-top: 10px;">
-                Tantangan transisi energi di Indonesia bukan sekadar mendatangkan mobil listrik, melainkan bagaimana mengganti atau mengkonversi <b>172,9 juta kendaraan pembakaran internal (ICE)</b> yang saat ini mendominasi jalanan tanah air.
-            </p>
-        </div>
-        
-        <!-- Section 2: Market Dynamics -->
-        <div style="margin-bottom: 30px;">
-            <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-                2. Lonjakan Pasar xEV (2024-2025)
-            </h3>
-            <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.9rem; text-align: left;">
-                <thead>
-                    <tr style="border-bottom: 2px solid rgba(255,255,255,0.1); color: #94a3b8;">
-                        <th style="padding: 10px 5px;">Kategori</th>
-                        <th style="padding: 10px 5px;">Penjualan 2024</th>
-                        <th style="padding: 10px 5px;">Penjualan 2025</th>
-                        <th style="padding: 10px 5px; color: #39ff14;">Pertumbuhan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <td style="padding: 10px 5px; font-weight: 600;">BEV (Listrik Murni)</td>
-                        <td style="padding: 10px 5px;">43.188 unit</td>
-                        <td style="padding: 10px 5px; font-weight: 700; color: #39ff14;">103.931 unit</td>
-                        <td style="padding: 10px 5px; color: #39ff14; font-weight: bold;">+141%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <td style="padding: 10px 5px; font-weight: 600;">HEV (Hybrid)</td>
-                        <td style="padding: 10px 5px;">59.903 unit</td>
-                        <td style="padding: 10px 5px;">65.943 unit</td>
-                        <td style="padding: 10px 5px;">+10%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <td style="padding: 10px 5px; font-weight: 600;">PHEV (Plug-in Hybrid)</td>
-                        <td style="padding: 10px 5px;">136 unit</td>
-                        <td style="padding: 10px 5px;">5.270 unit</td>
-                        <td style="padding: 10px 5px; color: #39ff14; font-weight: bold;">+3.775%</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="font-size: 0.9rem; line-height: 1.5; color: #cbd5e1;">
-                Tahun 2025 menjadi saksi peningkatan adopsi BEV secara drastis, berhasil melampaui pangsa pasar mobil Hybrid. Model terlaris didominasi oleh <b>BYD Atto 1</b> dan <b>Wuling BinguoEV</b> untuk segmen murni, sementara <b>Toyota Kijang Innova Zenix</b> memimpin segmen Hybrid dengan 61% pangsa pasar.
-            </p>
-        </div>
-        
-        <!-- Section 3: Infrastructure Bottleneck -->
-        <div style="margin-bottom: 30px;">
-            <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-                3. Bottleneck Infrastruktur: Sentralisasi Jakarta
-            </h3>
-            <div style="display: flex; gap: 20px;">
-                <div style="flex: 3; font-size: 0.9rem; line-height: 1.5; color: #cbd5e1;">
-                    Berdasarkan sampling data spasial, ekosistem pengisian daya (SPKLU) masih <b>terkonsentrasi sangat padat di DKI Jakarta</b>, khususnya Jakarta Selatan dan Pusat. 
-                    <br><br>
-                    Hal ini memicu kekhawatiran jarak tempuh (*range anxiety*) bagi masyarakat di luar ibu kota. Penyediaan SPKLU didominasi oleh investasi swasta <b>Voltron (447 unit)</b> diikuti oleh BUMN <b>PLN (250 unit)</b>. Komposisi charger didominasi oleh tipe <i>Medium Charging</i> (38%), membutuhkan akselerasi ke tipe <i>Fast</i> & <i>Ultra Fast</i>.
-                </div>
-                <div style="flex: 2; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
-                    <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;">Teknologi Pengisian DKI Jakarta (Sample)</div>
-                    <div style="font-size: 1.1rem; font-weight: 700; color: #4facfe;">Medium: 551 unit</div>
-                    <div style="font-size: 1.1rem; font-weight: 700; color: #ff007f; margin: 5px 0;">Ultra Fast: 153 unit</div>
-                    <div style="font-size: 1.1rem; font-weight: 700; color: #39ff14;">Fast: 89 unit</div>
-                </div>
+            
+            <!-- Section 2: Market Dynamics -->
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
+                    2. Lonjakan Pasar xEV (2024-2025)
+                </h3>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.9rem; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid rgba(255,255,255,0.1); color: #94a3b8;">
+                            <th style="padding: 10px 5px;">Kategori</th>
+                            <th style="padding: 10px 5px;">Penjualan 2024</th>
+                            <th style="padding: 10px 5px;">Penjualan 2025</th>
+                            <th style="padding: 10px 5px; color: #39ff14;">Pertumbuhan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 10px 5px; font-weight: 600;">BEV (Listrik Murni)</td>
+                            <td style="padding: 10px 5px;">43.188 unit</td>
+                            <td style="padding: 10px 5px; font-weight: 700; color: #39ff14;">103.931 unit</td>
+                            <td style="padding: 10px 5px; color: #39ff14; font-weight: bold;">+141%</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 10px 5px; font-weight: 600;">HEV (Hybrid)</td>
+                            <td style="padding: 10px 5px;">59.903 unit</td>
+                            <td style="padding: 10px 5px;">65.943 unit</td>
+                            <td style="padding: 10px 5px;">+10%</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 10px 5px; font-weight: 600;">PHEV (Plug-in Hybrid)</td>
+                            <td style="padding: 10px 5px;">136 unit</td>
+                            <td style="padding: 10px 5px;">5.270 unit</td>
+                            <td style="padding: 10px 5px; color: #39ff14; font-weight: bold;">+3.775%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.9rem; line-height: 1.5; color: #cbd5e1;">
+                    Tahun 2025 menjadi saksi peningkatan adopsi BEV secara drastis, berhasil melampaui pangsa pasar mobil Hybrid. Model terlaris didominasi oleh <b>BYD Atto 1</b> dan <b>Wuling BinguoEV</b> untuk segmen murni, sementara <b>Toyota Kijang Innova Zenix</b> memimpin segmen Hybrid dengan 61% pangsa pasar.
+                </p>
             </div>
-        </div>
-        
-        <!-- Section 4: The Paradox & Green Jobs -->
-        <div style="margin-bottom: 30px;">
-            <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-                4. Kerja Hijau (Green Jobs) & Paradoks Energi
-            </h3>
-            <div style="display: flex; gap: 20px;">
-                <div style="flex: 1; background: rgba(57, 255, 20, 0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(57, 255, 20, 0.1);">
-                    <div style="font-weight: 700; color: #39ff14; font-size: 0.95rem; margin-bottom: 5px;">Peluang Kerja Hijau</div>
-                    <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
-                        <li>Target 500.000 lapangan kerja hijau baru pada 2030.</li>
-                        <li>Kebutuhan insinyur baterai, teknisi tegangan tinggi, dan instalatur SPKLU.</li>
-                        <li>Peralihan ekspor dari nikel mentah ke perakitan CKD lokal bernilai tinggi.</li>
-                    </ul>
-                </div>
-                <div style="flex: 1; background: rgba(255, 0, 127, 0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 0, 127, 0.1);">
-                    <div style="font-weight: 700; color: #ff007f; font-size: 0.95rem; margin-bottom: 5px;">Paradoks & Tantangan</div>
-                    <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
-                        <li>Grid nasional masih disuplai >60% listrik berbasis batubara (PLTU).</li>
-                        <li>Dampak lingkungan penambangan nikel terhadap ekosistem darat/laut lokal.</li>
-                        <li>Skill gap: Jutaan mekanik otomotif konvensional terancam kehilangan kerja.</li>
-                    </ul>
+            
+            <!-- Section 3: Infrastructure Bottleneck -->
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
+                    3. Bottleneck Infrastruktur: Sentralisasi Jakarta
+                </h3>
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 3; font-size: 0.9rem; line-height: 1.5; color: #cbd5e1;">
+                        Berdasarkan sampling data spasial, ekosistem pengisian daya (SPKLU) masih <b>terkonsentrasi sangat padat di DKI Jakarta</b>, khususnya Jakarta Selatan dan Pusat. 
+                        <br><br>
+                        Hal ini memicu kekhawatiran jarak tempuh (*range anxiety*) bagi masyarakat di luar ibu kota. Penyediaan SPKLU didominasi oleh investasi swasta <b>Voltron (447 unit)</b> diikuti oleh BUMN <b>PLN (250 unit)</b>. Komposisi charger didominasi oleh tipe <i>Medium Charging</i> (38%), membutuhkan akselerasi ke tipe <i>Fast</i> & <i>Ultra Fast</i>.
+                    </div>
+                    <div style="flex: 2; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                        <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;">Teknologi Pengisian DKI Jakarta (Sample)</div>
+                        <div style="font-size: 1.1rem; font-weight: 700; color: #4facfe;">Medium: 551 unit</div>
+                        <div style="font-size: 1.1rem; font-weight: 700; color: #ff007f; margin: 5px 0;">Ultra Fast: 153 unit</div>
+                        <div style="font-size: 1.1rem; font-weight: 700; color: #39ff14;">Fast: 89 unit</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Section 5: Recommendations -->
-        <div style="background: rgba(0, 242, 254, 0.04); padding: 15px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.1); margin-bottom: 25px;">
-            <h4 style="color: #00f2fe; margin: 0 0 8px 0; font-weight: 700; font-size: 0.95rem;">💡 Solusi & Rekomendasi Aplikatif:</h4>
-            <ol style="margin: 0; padding-left: 18px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
-                <li><b>Akselerasi Dekarbonisasi Grid:</b> Meningkatkan porsi EBT pada sistem kelistrikan nasional agar pengisian daya EV tidak memindahkan emisi ke batubara.</li>
-                <li><b>Pemerataan SPKLU Koridor Antar-Kota:</b> Fokus pada pembangunan fast charger di jalur Trans-Jawa, Trans-Sumatera, dan pusat transportasi luar Jakarta.</li>
-                <li><b>Program Reskilling Nasional:</b> Meluncurkan program sertifikasi teknisi EV nasional untuk mekanik konvensional guna mewujudkan transisi yang adil.</li>
-            </ol>
-        </div>
-        
-        <!-- Poster Footer -->
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; font-size: 0.75rem; color: #64748b;">
-            <div>
-                Data diolah dari: ESDM, Gaikindo, BPS, Google Trends (Akses Juni 2026)
+            
+            <!-- Section 4: The Paradox & Green Jobs -->
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
+                    4. Kerja Hijau (Green Jobs) & Paradoks Energi
+                </h3>
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 1; background: rgba(57, 255, 20, 0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(57, 255, 20, 0.1);">
+                        <div style="font-weight: 700; color: #39ff14; font-size: 0.95rem; margin-bottom: 5px;">Peluang Kerja Hijau</div>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
+                            <li>Target 500.000 lapangan kerja hijau baru pada 2030.</li>
+                            <li>Kebutuhan insinyur baterai, teknisi tegangan tinggi, dan instalatur SPKLU.</li>
+                            <li>Peralihan ekspor dari nikel mentah ke perakitan CKD lokal bernilai tinggi.</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; background: rgba(255, 0, 127, 0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 0, 127, 0.1);">
+                        <div style="font-weight: 700; color: #ff007f; font-size: 0.95rem; margin-bottom: 5px;">Paradoks & Tantangan</div>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
+                            <li>Grid nasional masih disuplai >60% listrik berbasis batubara (PLTU).</li>
+                            <li>Dampak lingkungan penambangan nikel terhadap ekosistem darat/laut lokal.</li>
+                            <li>Skill gap: Jutaan mekanik otomotif konvensional terancam kehilangan kerja.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div style="text-align: right;">
-                Dibuat oleh: <b>Zaky Muhammad Fauzi & Brama Hartoyo</b><br>
-                DS-48-03 S1 Sains Data, School of Computing, Telkom University
+            
+            <!-- Section 5: Recommendations -->
+            <div style="background: rgba(0, 242, 254, 0.04); padding: 15px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.1); margin-bottom: 25px;">
+                <h4 style="color: #00f2fe; margin: 0 0 8px 0; font-weight: 700; font-size: 0.95rem;">💡 Solusi & Rekomendasi Aplikatif:</h4>
+                <ol style="margin: 0; padding-left: 18px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+                    <li><b>Akselerasi Dekarbonisasi Grid:</b> Meningkatkan porsi EBT pada sistem kelistrikan nasional agar pengisian daya EV tidak memindahkan emisi ke batubara.</li>
+                    <li><b>Pemerataan SPKLU Koridor Antar-Kota:</b> Fokus pada pembangunan fast charger di jalur Trans-Jawa, Trans-Sumatera, dan pusat transportasi luar Jakarta.</li>
+                    <li><b>Program Reskilling Nasional:</b> Meluncurkan program sertifikasi teknisi EV nasional untuk mekanik konvensional guna mewujudkan transisi yang adil.</li>
+                </ol>
             </div>
+            
+            <!-- Poster Footer -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; font-size: 0.75rem; color: #64748b;">
+                <div>
+                    Data diolah dari: ESDM, Gaikindo, BPS, Google Trends (Akses Juni 2026)
+                </div>
+                <div style="text-align: right;">
+                    Dibuat oleh: <b>Zaky Muhammad Fauzi & Brama Hartoyo</b><br>
+                    DS-48-03 S1 Sains Data, School of Computing, Telkom University
+                </div>
+            </div>
+            
         </div>
-        
-    </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
