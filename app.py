@@ -39,44 +39,50 @@ st.markdown("""
 <style>
     /* Main App Layout */
     .stApp {
-        background-color: #ffffff;
-        color: #090a10;
+        background-color: #f8fafc;
+        color: #0f172a;
         font-family: 'Outfit', sans-serif;
     }
     
     /* Sidebar */
     section[data-testid="stSidebar"] {
-        background-color: #111320 !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: #f1f5f9 !important;
+        border-right: 1px solid #e2e8f0 !important;
+    }
+    
+    /* Sidebar Text and Headings */
+    section[data-testid="stSidebar"] .stMarkdown, section[data-testid="stSidebar"] h2, section[data-testid="stSidebar"] h3 {
+        color: #0f172a !important;
     }
     
     /* Cards / Containers */
     .premium-card {
-        background: rgba(25, 28, 48, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
         border-radius: 16px;
         padding: 24px;
         margin-bottom: 20px;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     }
     
-    /* Glow effect for headings */
+    /* Clean text styling instead of neon glow */
     .glow-text {
-        text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
-        color: #00f2fe;
+        color: #0f766e !important;
+        font-weight: 700;
     }
     
     .glow-green {
-        text-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
-        color: #39ff14;
+        color: #16a34a !important;
+        font-weight: 700;
     }
     
     /* Metrics Box */
     .metric-box {
-        background: rgba(13, 14, 25, 0.8);
-        border-left: 4px solid #00f2fe;
+        background: #f8fafc;
+        border-left: 4px solid #0284c7;
+        border-top: 1px solid #e2e8f0;
+        border-right: 1px solid #e2e8f0;
+        border-bottom: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 15px;
         margin: 10px 0;
@@ -84,14 +90,14 @@ st.markdown("""
     
     .metric-title {
         font-size: 0.9rem;
-        color: #94a3b8;
+        color: #475569;
         margin-bottom: 5px;
     }
     
     .metric-value {
         font-size: 1.8rem;
         font-weight: 700;
-        color: #ffffff;
+        color: #0f172a;
     }
     
     /* Tabs Customization */
@@ -103,50 +109,34 @@ st.markdown("""
     .stTabs [data-baseweb="tab"] {
         height: 50px;
         white-space: pre-wrap;
-        background-color: rgba(25, 28, 48, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: #f1f5f9;
+        border: 1px solid #e2e8f0;
         border-radius: 8px 8px 0px 0px;
-        color: #94a3b8;
+        color: #475569;
         font-weight: 600;
         padding: 10px 20px;
         transition: all 0.3s ease;
     }
     
     .stTabs [data-baseweb="tab"]:hover {
-        color: #00f2fe;
-        background-color: rgba(25, 28, 48, 0.8);
+        color: #0284c7;
+        background-color: #e2e8f0;
     }
     
     .stTabs [aria-selected="true"] {
-        background-color: rgba(25, 28, 48, 0.95) !important;
-        border-top: 2px solid #00f2fe !important;
-        color: #00f2fe !important;
+        background-color: #ffffff !important;
+        border-top: 2px solid #0284c7 !important;
+        color: #0284c7 !important;
     }
     
     /* Footer */
     .creator-footer {
         font-size: 0.75rem;
-        color: #64748b;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #475569;
+        border-top: 1px solid #e2e8f0;
         padding-top: 15px;
         margin-top: 30px;
         line-height: 1.4;
-    }
-    
-    /* Print Poster styling */
-    @media print {
-        body * {
-            visibility: hidden;
-        }
-        #print-section, #print-section * {
-            visibility: visible;
-        }
-        #print-section {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -198,22 +188,21 @@ with st.sidebar:
 
 # Header Banner
 st.markdown("""
-<div style='background: linear-gradient(135deg, #111328 0%, #070913 100%); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 25px;'>
-    <h1 style='margin: 0; font-size: 2.3rem; font-weight: 800; background: linear-gradient(to right, #00f2fe, #4facfe, #39ff14); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>
+<div style='background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%); padding: 30px; border-radius: 16px; border: 1px solid #cbd5e1; margin-bottom: 25px;'>
+    <h1 style='margin: 0; font-size: 2.3rem; font-weight: 800; color: #1e3a8a;'>
         TRANSISI ENERGI NASIONAL: MENGAKSELERASI EKOSISTEM KENDARAAN LISTRIK (EV)
     </h1>
-    <p style='margin: 10px 0 0 0; color: #94a3b8; font-size: 1.1rem;'>
+    <p style='margin: 10px 0 0 0; color: #475569; font-size: 1.1rem;'>
         Analisis Komprehensif Mengenai Perkembangan, Tren Pasar, Tantangan Infrastruktur, dan Lapangan Kerja Hijau di Indonesia.
     </p>
 </div>
 """, unsafe_allow_html=True)
 
-# Create Tabs
-tab1, tab2, tab3, tab4 = st.tabs([
+# Create Tabs (Tab 4 Removed)
+tab1, tab2, tab3 = st.tabs([
     "📈 Tren Pasar & Populasi xEV", 
     "⚡ Infrastruktur SPKLU (Jakarta)", 
-    "🌱 Peluang, Tantangan & Kerja Hijau", 
-    "📰 Poster Infografis (Format Poster)"
+    "🌱 Peluang, Tantangan & Kerja Hijau"
 ])
 
 # ----------------- TAB 1: TREN PASAR & POPULASI -----------------
@@ -226,33 +215,33 @@ with tab1:
     with col1:
         st.markdown("""
         <div class='premium-card' style='padding: 15px; margin-bottom: 10px;'>
-            <div style='color: #94a3b8; font-size: 0.85rem;'>BEV Wholesales (2025)</div>
-            <div style='font-size: 1.7rem; font-weight: 700; color: #39ff14;'>103.931 Unit</div>
-            <div style='font-size: 0.8rem; color: #00f2fe;'>+141% YoY (vs 2024)</div>
+            <div style='color: #475569; font-size: 0.85rem;'>BEV Wholesales (2025)</div>
+            <div style='font-size: 1.7rem; font-weight: 700; color: #16a34a;'>103.931 Unit</div>
+            <div style='font-size: 0.8rem; color: #0f766e;'>+141% YoY (vs 2024)</div>
         </div>
         """, unsafe_allow_html=True)
     with col2:
         st.markdown("""
         <div class='premium-card' style='padding: 15px; margin-bottom: 10px;'>
-            <div style='color: #94a3b8; font-size: 0.85rem;'>Hybrid (HEV) Wholesales (2025)</div>
-            <div style='font-size: 1.7rem; font-weight: 700; color: #4facfe;'>65.943 Unit</div>
-            <div style='font-size: 0.8rem; color: #94a3b8;'>+10% YoY (vs 2024)</div>
+            <div style='color: #475569; font-size: 0.85rem;'>Hybrid (HEV) Wholesales (2025)</div>
+            <div style='font-size: 1.7rem; font-weight: 700; color: #0284c7;'>65.943 Unit</div>
+            <div style='font-size: 0.8rem; color: #64748b;'>+10% YoY (vs 2024)</div>
         </div>
         """, unsafe_allow_html=True)
     with col3:
         st.markdown("""
         <div class='premium-card' style='padding: 15px; margin-bottom: 10px;'>
-            <div style='color: #94a3b8; font-size: 0.85rem;'>Pangsa xEV terhadap Mobil Nasional</div>
-            <div style='font-size: 1.7rem; font-weight: 700; color: #ff007f;'>21,8% (2025)</div>
-            <div style='font-size: 0.8rem; color: #94a3b8;'>Meningkat drastis dari 11,9% (2024)</div>
+            <div style='color: #475569; font-size: 0.85rem;'>Pangsa xEV terhadap Mobil Nasional</div>
+            <div style='font-size: 1.7rem; font-weight: 700; color: #be123c;'>21,8% (2025)</div>
+            <div style='font-size: 0.8rem; color: #64748b;'>Meningkat drastis dari 11,9% (2024)</div>
         </div>
         """, unsafe_allow_html=True)
     with col4:
         st.markdown("""
         <div class='premium-card' style='padding: 15px; margin-bottom: 10px;'>
-            <div style='color: #94a3b8; font-size: 0.85rem;'>Target KBLBB ESDM (2030)</div>
-            <div style='font-size: 1.7rem; font-weight: 700; color: #f1c40f;'>943.764 Unit</div>
-            <div style='font-size: 0.8rem; color: #f1c40f;'>Peta Jalan Kepmen ESDM 24/2025</div>
+            <div style='color: #475569; font-size: 0.85rem;'>Target KBLBB ESDM (2030)</div>
+            <div style='font-size: 1.7rem; font-weight: 700; color: #b45309;'>943.764 Unit</div>
+            <div style='font-size: 0.8rem; color: #b45309;'>Peta Jalan Kepmen ESDM 24/2025</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -272,15 +261,15 @@ with tab1:
             y="Penjualan",
             color="Kategori",
             barmode="group",
-            color_discrete_map={"BEV": "#39ff14", "HEV": "#4facfe", "PHEV": "#ff007f"},
+            color_discrete_map={"BEV": "#16a34a", "HEV": "#0284c7", "PHEV": "#f97316"},
             text_auto='.3s'
         )
         fig_sales.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font_color='#e2e8f0',
-            xaxis=dict(gridcolor='rgba(255,255,255,0.05)'),
-            yaxis=dict(gridcolor='rgba(255,255,255,0.05)', title="Penjualan (Unit)"),
+            font_color='#0f172a',
+            xaxis=dict(gridcolor='#e2e8f0'),
+            yaxis=dict(gridcolor='#e2e8f0', title="Penjualan (Unit)"),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
         st.plotly_chart(fig_sales, use_container_width=True)
@@ -308,21 +297,21 @@ with tab1:
             x=roadmap_years, y=roadmap_targets,
             mode='lines+markers',
             name='Target Nasional (ESDM)',
-            line=dict(color='#f1c40f', width=3, dash='dash'),
+            line=dict(color='#b45309', width=3, dash='dash'),
             marker=dict(size=8)
         ))
         fig_target.add_trace(go.Bar(
             x=[2025], y=[147119],
             name='Realisasi Populasi (2025)',
-            marker_color='#39ff14',
+            marker_color='#16a34a',
             width=0.4
         ))
         fig_target.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font_color='#e2e8f0',
-            xaxis=dict(gridcolor='rgba(255,255,255,0.05)', tickmode='linear'),
-            yaxis=dict(gridcolor='rgba(255,255,255,0.05)', title="Populasi Kendaraan (Unit)"),
+            font_color='#0f172a',
+            xaxis=dict(gridcolor='#e2e8f0', tickmode='linear'),
+            yaxis=dict(gridcolor='#e2e8f0', title="Populasi Kendaraan (Unit)"),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
         st.plotly_chart(fig_target, use_container_width=True)
@@ -346,14 +335,14 @@ with tab1:
             x="Time",
             y=["ev", "kendaraan listrik", "SPKLU"],
             labels={"value": "Indeks Minat (0-100)", "variable": "Kata Kunci"},
-            color_discrete_sequence=["#00f2fe", "#39ff14", "#ff007f"]
+            color_discrete_sequence=["#0284c7", "#16a34a", "#f97316"]
         )
         fig_trends.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font_color='#e2e8f0',
-            xaxis=dict(gridcolor='rgba(255,255,255,0.05)', title="Tahun"),
-            yaxis=dict(gridcolor='rgba(255,255,255,0.05)'),
+            font_color='#0f172a',
+            xaxis=dict(gridcolor='#e2e8f0', title="Tahun"),
+            yaxis=dict(gridcolor='#e2e8f0'),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
         st.plotly_chart(fig_trends, use_container_width=True)
@@ -375,12 +364,12 @@ with tab1:
             labels=categories,
             values=values,
             hole=.4,
-            marker_colors=["#e2e8f0", "#39ff14"]
+            marker_colors=["#cbd5e1", "#16a34a"]
         )])
         fig_gap.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font_color='#e2e8f0',
+            font_color='#0f172a',
             legend=dict(orientation="h", yanchor="bottom", y=-0.1, xanchor="center", x=0.5)
         )
         st.plotly_chart(fig_gap, use_container_width=True)
@@ -420,19 +409,20 @@ with tab2:
             color="teknologi",
             size="jumlah_unit",
             color_discrete_map={
-                "MEDIUM CHARGING": "#4facfe",
-                "ULTRA FAST CHARGING": "#ff007f",
-                "STANDART CHARGING": "#e2e8f0",
-                "FAST CHARGING": "#39ff14"
+                "MEDIUM CHARGING": "#0284c7",
+                "ULTRA FAST CHARGING": "#be123c",
+                "STANDART CHARGING": "#64748b",
+                "FAST CHARGING": "#16a34a"
             },
             zoom=10.5,
-            mapbox_style="carto-darkmatter",
+            mapbox_style="carto-positron",
             height=500
         )
         fig_map.update_layout(
             margin={"r":0,"t":0,"l":0,"b":0},
             paper_bgcolor='rgba(0,0,0,0)',
-            plot_bgcolor='rgba(0,0,0,0)'
+            plot_bgcolor='rgba(0,0,0,0)',
+            font_color='#0f172a'
         )
         st.plotly_chart(fig_map, use_container_width=True)
         st.markdown("*Ukuran titik melambangkan jumlah unit colokan (charger) di lokasi tersebut. Seret dan perbesar peta untuk melihat sebaran spasial secara mendalam.*")
@@ -451,14 +441,14 @@ with tab2:
             y=["target_spklu", "realisasi_spklu"],
             barmode="group",
             labels={"value": "Jumlah SPKLU (Unit)", "periode_data": "Tahun", "variable": "Status"},
-            color_discrete_map={"target_spklu": "#64748b", "realisasi_spklu": "#00f2fe"}
+            color_discrete_map={"target_spklu": "#cbd5e1", "realisasi_spklu": "#0284c7"}
         )
         fig_target_spklu.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font_color='#e2e8f0',
-            xaxis=dict(gridcolor='rgba(255,255,255,0.05)', tickmode='linear'),
-            yaxis=dict(gridcolor='rgba(255,255,255,0.05)'),
+            font_color='#0f172a',
+            xaxis=dict(gridcolor='#e2e8f0', tickmode='linear'),
+            yaxis=dict(gridcolor='#e2e8f0'),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
         st.plotly_chart(fig_target_spklu, use_container_width=True)
@@ -475,18 +465,18 @@ with tab2:
             orientation='h',
             color='Teknologi',
             color_discrete_map={
-                "MEDIUM CHARGING": "#4facfe",
-                "ULTRA FAST CHARGING": "#ff007f",
-                "STANDART CHARGING": "#e2e8f0",
-                "FAST CHARGING": "#39ff14"
+                "MEDIUM CHARGING": "#0284c7",
+                "ULTRA FAST CHARGING": "#be123c",
+                "STANDART CHARGING": "#64748b",
+                "FAST CHARGING": "#16a34a"
             }
         )
         fig_tech.update_layout(
             showlegend=False,
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font_color='#e2e8f0',
-            xaxis=dict(gridcolor='rgba(255,255,255,0.05)'),
+            font_color='#0f172a',
+            xaxis=dict(gridcolor='#e2e8f0'),
             yaxis=dict(gridcolor='rgba(0,0,0,0)')
         )
         st.plotly_chart(fig_tech, use_container_width=True)
@@ -511,13 +501,13 @@ with tab2:
         top_ops,
         names='Operator',
         values='Jumlah SPKLU',
-        color_discrete_sequence=px.colors.sequential.Agsunset,
+        color_discrete_sequence=px.colors.qualitative.Safe,
         hole=0.4
     )
     fig_op.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
-        font_color='#e2e8f0',
+        font_color='#0f172a',
         legend=dict(orientation="v", yanchor="middle", y=0.5, xanchor="left", x=1)
     )
     op_col1, op_col2 = st.columns([1, 2])
@@ -550,19 +540,19 @@ with tab3:
     fig_trade.add_trace(go.Bar(
         x=trade_years, y=cbu_exports,
         name="Ekspor CBU (Unit)",
-        marker_color="#39ff14"
+        marker_color="#16a34a"
     ))
     fig_trade.add_trace(go.Bar(
         x=trade_years, y=cbu_imports,
         name="Impor CBU (Unit)",
-        marker_color="#ff007f"
+        marker_color="#c2410c"
     ))
     fig_trade.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
-        font_color='#e2e8f0',
-        xaxis=dict(gridcolor='rgba(255,255,255,0.05)', title="Tahun"),
-        yaxis=dict(gridcolor='rgba(255,255,255,0.05)', title="Jumlah Kendaraan (Unit)"),
+        font_color='#0f172a',
+        xaxis=dict(gridcolor='#e2e8f0', title="Tahun"),
+        yaxis=dict(gridcolor='#e2e8f0', title="Jumlah Kendaraan (Unit)"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
     )
     
@@ -597,171 +587,3 @@ with tab3:
         * **Tantangan Gap Keterampilan:** Indonesia terancam kekurangan tenaga ahli terlatih. Dibutuhkan program pelatihan ulang (*reskilling*) bagi jutaan mekanik bengkel konvensional agar terbiasa menangani sistem kelistrikan bertegangan tinggi (*high-voltage systems*), serta kurikulum ramah lingkungan (*green curriculum*) sejak bangku sekolah kejuruan.
         """)
         st.markdown("</div>", unsafe_allow_html=True)
-
-# ----------------- TAB 4: POSTER INFOGRAFIS (FORMAT POSTER) -----------------
-with tab4:
-    # Render the poster layout as a single-page structured dashboard
-    poster_html = """
-<!-- Browser Native Print Trigger -->
-<div style="text-align: center; margin-bottom: 20px; display: flex; justify-content: center; gap: 15px;">
-    <button onclick="window.print()" style="background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); color: #090a10; border: none; padding: 12px 24px; font-weight: 700; font-size: 1rem; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4); transition: transform 0.2s;">
-        🖨️ Cetak Poster / Simpan PDF
-    </button>
-</div>
-
-<div id="print-section" style="background-color: #0b0c15; color: #e2e8f0; padding: 40px; border-radius: 12px; border: 2px solid #00f2fe; width: 100%; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-    
-    <!-- Poster Header -->
-    <div style="text-align: center; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 25px;">
-        <div style="color: #39ff14; font-weight: 800; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase;">
-            Statistics Infographic Competition (SIC) SATRIA DATA 2026
-        </div>
-        <h1 style="color: #ffffff; font-size: 2.2rem; font-weight: 800; margin: 10px 0; line-height: 1.2;">
-            TRANSISI EMERGENSI EKOSISTEM EV DI INDONESIA
-        </h1>
-        <p style="color: #94a3b8; font-size: 1rem; margin: 5px 0 0 0; font-style: italic;">
-            Menakar Kesiapan Pasar, Infrastruktur SPKLU, serta Tantangan Kerja Hijau Nasional
-        </p>
-    </div>
-    
-    <!-- Section 1: The Transition Gap -->
-    <div style="margin-bottom: 30px;">
-        <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-            1. Jurang Transisi: Skala Raksasa yang Harus Dielektrifikasi
-        </h3>
-        <div style="display: flex; gap: 20px; margin-bottom: 10px;">
-            <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border-left: 4px solid #64748b;">
-                <div style="font-size: 0.8rem; color: #94a3b8;">Populasi Kendaraan Konvensional (BBM)</div>
-                <div style="font-size: 1.6rem; font-weight: 700; color: #ffffff;">172.938.093 Unit</div>
-                <div style="font-size: 0.75rem; color: #64748b; margin-top: 5px;">Minyak bumi impor menekan APBN</div>
-            </div>
-            <div style="flex: 1; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border-left: 4px solid #39ff14;">
-                <div style="font-size: 0.8rem; color: #94a3b8;">Realisasi Populasi KBLBB (Listrik Murni)</div>
-                <div style="font-size: 1.6rem; font-weight: 700; color: #39ff14;">147.119 Unit</div>
-                <div style="font-size: 0.75rem; color: #39ff14; margin-top: 5px;">Hanya ~0,08% dari total armada nasional</div>
-            </div>
-        </div>
-        <p style="font-size: 0.9rem; line-height: 1.5; color: #cbd5e1; margin-top: 10px;">
-            Tantangan transisi energi di Indonesia bukan sekadar mendatangkan mobil listrik, melainkan bagaimana mengganti atau mengkonversi <b>172,9 juta kendaraan pembakaran internal (ICE)</b> yang saat ini mendominasi jalanan tanah air.
-        </p>
-    </div>
-    
-    <!-- Section 2: Market Dynamics -->
-    <div style="margin-bottom: 30px;">
-        <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-            2. Lonjakan Pasar xEV (2024-2025)
-        </h3>
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.9rem; text-align: left;">
-            <thead>
-                <tr style="border-bottom: 2px solid rgba(255,255,255,0.1); color: #94a3b8;">
-                    <th style="padding: 10px 5px;">Kategori</th>
-                    <th style="padding: 10px 5px;">Penjualan 2024</th>
-                    <th style="padding: 10px 5px;">Penjualan 2025</th>
-                    <th style="padding: 10px 5px; color: #39ff14;">Pertumbuhan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <td style="padding: 10px 5px; font-weight: 600;">BEV (Listrik Murni)</td>
-                    <td style="padding: 10px 5px;">43.188 unit</td>
-                    <td style="padding: 10px 5px; font-weight: 700; color: #39ff14;">103.931 unit</td>
-                    <td style="padding: 10px 5px; color: #39ff14; font-weight: bold;">+141%</td>
-                </tr>
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <td style="padding: 10px 5px; font-weight: 600;">HEV (Hybrid)</td>
-                    <td style="padding: 10px 5px;">59.903 unit</td>
-                    <td style="padding: 10px 5px;">65.943 unit</td>
-                    <td style="padding: 10px 5px;">+10%</td>
-                </tr>
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <td style="padding: 10px 5px; font-weight: 600;">PHEV (Plug-in Hybrid)</td>
-                    <td style="padding: 10px 5px;">136 unit</td>
-                    <td style="padding: 10px 5px;">5.270 unit</td>
-                    <td style="padding: 10px 5px; color: #39ff14; font-weight: bold;">+3.775%</td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="font-size: 0.9rem; line-height: 1.5; color: #cbd5e1;">
-            Tahun 2025 menjadi saksi peningkatan adopsi BEV secara drastis, berhasil melampaui pangsa pasar mobil Hybrid. Model terlaris didominasi oleh <b>BYD Atto 1</b> dan <b>Wuling BinguoEV</b> untuk segmen murni, sementara <b>Toyota Kijang Innova Zenix</b> memimpin segmen Hybrid dengan 61% pangsa pasar.
-        </p>
-    </div>
-    
-    <!-- Section 3: Infrastructure Bottleneck -->
-    <div style="margin-bottom: 30px;">
-        <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-            3. Bottleneck Infrastruktur: Sentralisasi Jakarta
-        </h3>
-        <div style="display: flex; gap: 20px;">
-            <div style="flex: 3; font-size: 0.9rem; line-height: 1.5; color: #cbd5e1;">
-                Berdasarkan sampling data spasial, ekosistem pengisian daya (SPKLU) masih <b>terkonsentrasi sangat padat di DKI Jakarta</b>, khususnya Jakarta Selatan dan Pusat. 
-                <br><br>
-                Hal ini memicu kekhawatiran jarak tempuh (*range anxiety*) bagi masyarakat di luar ibu kota. Penyediaan SPKLU didominasi oleh investasi swasta <b>Voltron (447 unit)</b> diikuti oleh BUMN <b>PLN (250 unit)</b>. Komposisi charger didominasi oleh tipe <i>Medium Charging</i> (38%), membutuhkan akselerasi ke tipe <i>Fast</i> & <i>Ultra Fast</i>.
-            </div>
-            <div style="flex: 2; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;">Teknologi Pengisian DKI Jakarta (Sample)</div>
-                <div style="font-size: 1.1rem; font-weight: 700; color: #4facfe;">Medium: 551 unit</div>
-                <div style="font-size: 1.1rem; font-weight: 700; color: #ff007f; margin: 5px 0;">Ultra Fast: 153 unit</div>
-                <div style="font-size: 1.1rem; font-weight: 700; color: #39ff14;">Fast: 89 unit</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Section 4: The Paradox & Green Jobs -->
-    <div style="margin-bottom: 30px;">
-        <h3 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 5px; font-weight: 700; margin-bottom: 15px;">
-            4. Kerja Hijau (Green Jobs) & Paradoks Energi
-        </h3>
-        <div style="display: flex; gap: 20px;">
-            <div style="flex: 1; background: rgba(57, 255, 20, 0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(57, 255, 20, 0.1);">
-                <div style="font-weight: 700; color: #39ff14; font-size: 0.95rem; margin-bottom: 5px;">Peluang Kerja Hijau</div>
-                <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
-                    <li>Target 500.000 lapangan kerja hijau baru pada 2030.</li>
-                    <li>Kebutuhan insinyur baterai, teknisi tegangan tinggi, dan instalatur SPKLU.</li>
-                    <li>Peralihan ekspor dari nikel mentah ke perakitan CKD lokal bernilai tinggi.</li>
-                </ul>
-            </div>
-            <div style="flex: 1; background: rgba(255, 0, 127, 0.02); padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 0, 127, 0.1);">
-                <div style="font-weight: 700; color: #ff007f; font-size: 0.95rem; margin-bottom: 5px;">Paradoks & Tantangan</div>
-                <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
-                    <li>Grid nasional masih disuplai >60% listrik berbasis batubara (PLTU).</li>
-                    <li>Dampak lingkungan penambangan nikel terhadap ekosistem darat/laut lokal.</li>
-                    <li>Skill gap: Jutaan mekanik otomotif konvensional terancam kehilangan kerja.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Section 5: Recommendations -->
-    <div style="background: rgba(0, 242, 254, 0.04); padding: 15px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.1); margin-bottom: 25px;">
-        <h4 style="color: #00f2fe; margin: 0 0 8px 0; font-weight: 700; font-size: 0.95rem;">💡 Solusi & Rekomendasi Aplikatif:</h4>
-        <ol style="margin: 0; padding-left: 18px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
-            <li><b>Akselerasi Dekarbonisasi Grid:</b> Meningkatkan porsi EBT pada sistem kelistrikan nasional agar pengisian daya EV tidak memindahkan emisi ke batubara.</li>
-            <li><b>Pemerataan SPKLU Koridor Antar-Kota:</b> Fokus pada pembangunan fast charger di jalur Trans-Jawa, Trans-Sumatera, dan pusat transportasi luar Jakarta.</li>
-            <li><b>Program Reskilling Nasional:</b> Meluncurkan program sertifikasi teknisi EV nasional untuk mekanik konvensional guna mewujudkan transisi yang adil.</li>
-        </ol>
-    </div>
-    
-    <!-- Poster Footer -->
-    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; font-size: 0.75rem; color: #64748b;">
-        <div>
-            Data diolah dari: ESDM, Gaikindo, BPS, Google Trends (Akses Juni 2026)
-        </div>
-        <div style="text-align: right;">
-            Dibuat oleh: <b>Zaky Muhammad Fauzi & Brama Hartoyo</b><br>
-            DS-48-03 S1 Sains Data, School of Computing, Telkom University
-        </div>
-    </div>
-    
-</div>
-"""
-    # Clean leading/trailing whitespace, remove HTML comments, and remove blank lines to prevent markdown block parsing issues
-    lines = []
-    for line in poster_html.split("\n"):
-        line_stripped = line.strip()
-        if not line_stripped:
-            continue
-        if line_stripped.startswith("<!--") and line_stripped.endswith("-->"):
-            continue
-        lines.append(line_stripped)
-    poster_html = "\n".join(lines)
-    st.markdown(poster_html, unsafe_allow_html=True)
